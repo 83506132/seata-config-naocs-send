@@ -1,0 +1,11 @@
+spring:
+  nacos:
+    host: localhost
+    port: 8848
+    username: nacos
+    password: 123456
+    fileConfig: classpath:/config.txt
+    pool: 20
+    namespaceId: 00753dc5-bfc4-4806-8405-eff2ca116e69
+    group: SEATA_GROUP
+    desc: Seata配置文件
