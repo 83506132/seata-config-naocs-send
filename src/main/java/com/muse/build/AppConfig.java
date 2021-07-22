@@ -15,9 +15,9 @@ public class AppConfig {
     @Resource
     NacosSend nacosSend;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws InterruptedException {
         SpringApplication.run(AppConfig.class, args);
-        System.in.read();
+        Thread.currentThread().suspend();
     }
 
     @PostConstruct

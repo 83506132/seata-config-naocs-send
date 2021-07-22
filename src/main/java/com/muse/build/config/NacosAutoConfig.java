@@ -7,6 +7,7 @@ import com.muse.build.utils.impl.NacosSendImpl;
 import com.sun.jmx.snmp.tasks.ThreadService;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;

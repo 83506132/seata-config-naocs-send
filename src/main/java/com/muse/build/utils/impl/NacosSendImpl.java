@@ -18,11 +18,11 @@ public class NacosSendImpl implements NacosSend {
         nacosAutoConfig.configFile().config();
         for (String s : nacosAutoConfig.configFile().config()) {
             nacosAutoConfig.threadPools().submitTask(() -> {
-                String url = nacosAutoConfig.getNacosAddr() + "&content=" +s.split("=", 2)[1] + "&dataId=" + s.split("=", 2)[0];
-                nacosAutoConfig.restTemplate.postForObject(url,null,Object.class);
+                String url = nacosAutoConfig.getNacosAddr() + "&content=" + s.split("=", 2)[1] + "&dataId=" + s.split("=", 2)[0];
+                nacosAutoConfig.restTemplate.postForObject(url, null, Object.class);
             });
         }
-        nacosAutoConfig.threadPools().submitTask(()->{
+        nacosAutoConfig.threadPools().submitTask(() -> {
             try {
                 TimeUnit.SECONDS.sleep(10);
             } catch (InterruptedException e) {
@@ -31,8 +31,13 @@ public class NacosSendImpl implements NacosSend {
             System.exit(1);
         });
     }
+
     @Override
     public boolean send(String... configRows) {
-        return false;
+        for (String s : configRows) {
+            String url = nacosAutoConfig.getNacosAddr() + "&content=" + s.split("=", 2)[1] + "&dataId=" + s.split("=", 2)[0];
+            nacosAutoConfig.restTemplate.postForObject(url, null, Object.class);
+        }
+        return true;
     }
 }
